@@ -29,7 +29,7 @@ void loop() {
 
 void drawLine(int startX, int startY, int endX, int endY) {
   //ensures the line is always drawn from left to right
-  if (endX > startX) {
+  if (endX < startX) {
     int interX = startX;
     startX = endX;
     endX = interX;
@@ -44,7 +44,7 @@ void drawLine(int startX, int startY, int endX, int endY) {
   //draw the line procedurally from left to right
   for(int i = startX; i < endX; i++) {
     //this will turn on each pixel possibly touched by the line in the y direction
-    for(int j = 0; j < ceil(slope); j++) {
+    for(int j = 0; j <= ceil(slope); j++) {
       leds[rectToIndex(startX + i, j + floor(startY))] = CRGB::White; 
     }
     startY += slope;
